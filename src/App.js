@@ -6,9 +6,6 @@ import styled, { keyframes } from "styled-components";
   자동완성은 vscode-styled-components 익스텐션 설치
 */
 
-const Father = styled.div`
-  display: flex;
-`;
 const rotationAnimation = keyframes`
   0% {
     transform: rotate(0deg);
@@ -22,43 +19,38 @@ const rotationAnimation = keyframes`
     transform: rotate(0deg);
     border-radius: 0px;
   }
+  `;
+
+const Wrapper = styled.div`
+  display: flex;
 `;
 const Box = styled.div`
-  background: ${(props) => props.bgColor};
-  width: 100px;
-  height: 100px;
-  /* animation: ${rotationAnimation} 3s linear infinite; */
-`;
-const Circle = styled(Box)`
-  border-radius: 50%;
-`;
-const Text = styled.span`
-  font-size: 15px;
-  color: #fff;
-`;
-const Btn = styled.button`
-  color: white;
+  width: 300px;
+  height: 300px;
   background-color: tomato;
-  border: 0;
-  border-radius: 15px;
-`;
-const Input = styled.input.attrs({ required: true})`
-  background-color: plum;
+  animation: ${rotationAnimation} 3s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 30px;
+    color: white;
+
+    &:hover {
+      color: blue;
+    }
+  }
 `;
 
 function App() {
   return (
     <>
-      <Father>
-        <Btn>Log In</Btn>
-        <Input></Input>
-        <Btn as="a" href="/">Log In</Btn>
-        <Box bgColor="pink">
-          <Text>Hello there</Text>
+      <Wrapper>
+        <Box>
+          <span>냥</span>
         </Box>
-        <Circle bgColor="yellowgreen" />
-        <Box bgColor="green" />
-      </Father>
+      </Wrapper>
     </>
   );
 }
