@@ -24,6 +24,11 @@ const rotationAnimation = keyframes`
 const Wrapper = styled.div`
   display: flex;
 `;
+
+const Emoji = styled.span`
+  font-size: 30px;
+  color: black;
+`;
 const Box = styled.div`
   width: 300px;
   height: 300px;
@@ -33,12 +38,11 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
 
-  span {
-    font-size: 30px;
-    color: white;
-
+  ${Emoji} {
     &:hover {
+      // pseudo selectors
       color: blue;
+      font-size: 98px;
     }
   }
 `;
@@ -47,8 +51,9 @@ function App() {
   return (
     <>
       <Wrapper>
+        <Emoji>멍</Emoji>
         <Box>
-          <span>냥</span>
+          <Emoji>냥</Emoji>
         </Box>
       </Wrapper>
     </>
