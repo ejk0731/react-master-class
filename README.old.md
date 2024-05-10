@@ -1,2 +1,0 @@
-# react-master-class
-nomadcoders
