@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
-import { lightTheme } from "./theme";
+import {lightTheme} from "./theme";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* <ThemeProvider theme={lightTheme}> */}
+    <ThemeProvider theme={lightTheme}>
     <App />
-    {/* </ThemeProvider> */}
+    </ThemeProvider>
   </React.StrictMode>
 );
 

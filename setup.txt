@@ -1,0 +1,15 @@
+npm i react-router-dom@5.3.4
+npm i react-query
+타입 정의 필요
+npm i --save-dev @types/react-router-dom
+
+url 파라미터를 잡아내고 싶을때 useParams 훅사용
+
+index.tsx에서 ThemeProvider 컴포넌트 사용
+import { ThemeProvider } from "styled-components";
+
+tsconfig.json에서 설정 필요, 안할경우 style-component 사용시 오류남
+"include":  ["src/**/*.tsx", "src/**/*.ts", "src/**/*.d.ts"]
+
+Reset CSS
+https://github.com/zacanger/styled-reset/blob/master/src/index.ts
