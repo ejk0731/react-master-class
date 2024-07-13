@@ -20,3 +20,19 @@ https://api.coinpaprika.com/v1/coins
 
 anchor Tag makes the page to refresh, but we don't want to refresh the page.
 so we use Link tag instead. 
+
+
+This will run immediately.
+useEffect(() => {
+  (() => console.log(1))();
+}, []);
+
+
+Route States
+  <Link
+    to={{
+      pathname: `/${coin.id}`,
+      state: { name: coin.name },
+    }}
+  >
+  const location = useLocation();
