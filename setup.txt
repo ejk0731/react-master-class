@@ -13,3 +13,10 @@ tsconfig.json에서 설정 필요, 안할경우 style-component 사용시 오류
 
 Reset CSS
 https://github.com/zacanger/styled-reset/blob/master/src/index.ts
+
+
+Coin API
+https://api.coinpaprika.com/v1/coins
+
+anchor Tag makes the page to refresh, but we don't want to refresh the page.
+so we use Link tag instead. 
