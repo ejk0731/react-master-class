@@ -3,30 +3,43 @@ npm i react-query
 타입 정의 필요
 npm i --save-dev @types/react-router-dom
 
+------------------------
+
 url 파라미터를 잡아내고 싶을때 useParams 훅사용
+
+------------------------
 
 index.tsx에서 ThemeProvider 컴포넌트 사용
 import { ThemeProvider } from "styled-components";
 
+------------------------
+
 tsconfig.json에서 설정 필요, 안할경우 style-component 사용시 오류남
 "include":  ["src/**/*.tsx", "src/**/*.ts", "src/**/*.d.ts"]
+
+------------------------
 
 Reset CSS
 https://github.com/zacanger/styled-reset/blob/master/src/index.ts
 
+------------------------
 
 Coin API
 https://api.coinpaprika.com/v1/coins
 
+------------------------
+
 anchor Tag makes the page to refresh, but we don't want to refresh the page.
 so we use Link tag instead. 
 
+------------------------
 
 This will run immediately.
 useEffect(() => {
   (() => console.log(1))();
 }, []);
 
+------------------------
 
 Route States
   <Link
@@ -36,3 +49,27 @@ Route States
     }}
   >
   const location = useLocation();
+
+------------------------
+
+Data types
+console.log(data)
+  browser console, mouse right click
+  store object as global variable => temp1 has Data
+So i don't have to declare all the data type
+
+  Object.keys(temp1) on console - then you will get all key data from temp1 => as an array
+  Object.keys(temp1).join() on console - then you will get the result => as string
+  Object.values(temp1)
+  Object.values(temp1).map(v => typeof v)
+  Object.values(temp1).map(v => typeof v).join()
+------------------------
+
+interface title or name 
+  put I at first, so that people can now that it's an interface
+  ex) interface IPriceData {}
+
+------------------------
+useful keyboard shortcut
+
+  - Alt + ⇧(shift) + i : can add cursor at the end of each line which you dragged
