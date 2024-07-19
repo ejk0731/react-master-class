@@ -70,9 +70,74 @@ interface title or name
   ex) interface IPriceData {}
 
 ------------------------
+
 useful keyboard shortcut
 
   - Alt + ⇧(shift) + i : can add cursor at the end of each line which you dragged
 
 ------------------------
+
 useRouteMatch
+
+------------------------
+
+React Query
+  https://tanstack.com/query/latest/docs/framework/react/overview
+  if you didn't install it at first => npm install react query
+  
+  # data, loading -> make it automatic
+
+    ex)
+    const [coins, setCoins] = useState<CoinInterface[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+      (() => console.log(1))();
+      (async () => {
+        const response = await fetch("https://api.coinpaprika.com/v1/coins");
+        const json = await response.json();
+        setCoins(json.slice(0, 100));
+        setLoading(false);
+      })();
+      console.log(coins);
+    }, []);
+
+  # make fetch not in your component
+
+  # so make api.ts
+    export async function fetchCoins() {
+      return fetch("https://api.coinpaprika.com/v1/coins").then((response) => {
+        response.json();
+      });
+    }
+  
+  # use api in your component
+    const {isLoading, data} = useQuery("allCoins", fetchCoins);
+    
+    *****
+    1. useQuery will execute fetch function 
+    2. and if it's done it will tell you with isLoading 
+    3. and put json() data which i got from fetch function into data
+   
+    @@ When you use more than two queries at the same time, key has to be unique!! (+++ key is array type)
+    const { isLoading: infoLoading, data: infoData } = useQuery<IInfoData>(["info", coinId], () => fetchCoinInfo(coinId));
+    const { isLoading: tickersLoading, data: tickersData } = useQuery<IPriceData>(["tickers", coinId], () => fetchCoinTickers(coinId));
+
+  # react query is caching the response
+    So if you go back and forth, it doesn't load anymore. It loads just once!
+
+  # npm i @tanstack/react-query-devtools
+    You can see what data is cached through ReactQueryDevtools.
+
+    import {ReactQueryDevtools} from "react-query/devtools";
+
+    function App() {
+      return (
+        <>
+          <GlobalStyle />
+          <Router />
+          <ReactQueryDevtools initialIsOpen={true} />
+        </>
+      );
+    }
+
+------------------------
