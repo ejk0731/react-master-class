@@ -34,7 +34,10 @@ footer, header, hgroup, main, menu, nav, section {
     display: none;
 }
 body {
+  font-weight: 300;
   line-height: 1;
+  color:${(props) => props.theme.textColor};
+  line-height: 1.2;
 }
 menu, ol, ul {
   list-style: none;
