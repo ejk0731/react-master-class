@@ -141,3 +141,13 @@ React Query
     }
 
 ------------------------
+
+  Route path, Link to 넘겨주는게 다름, 
+  Route path에 Link to 처럼 {`/${coinId}/price`} 식으로 넘기면 useParams 안넘어옴! 
+  path 는 {`/:coinId/price`} 요런식으로 넘겨줘야함
+
+------------------------
+  Date.now(); => milliseconds / 1000 => seconds
+
+  Math.floor(); 1.9 => 1
+  Math.ceil(); 1.9 => 2

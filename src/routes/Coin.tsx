@@ -149,7 +149,6 @@ function Coin() {
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
-  console.log(priceMatch);
 
   const { isLoading: infoLoading, data: infoData } = useQuery<IInfoData>(["info", coinId], () => fetchCoinInfo(coinId));
   const { isLoading: tickersLoading, data: tickersData } = useQuery<IPriceData>(["tickers", coinId], () => fetchCoinTickers(coinId));
@@ -200,11 +199,16 @@ function Coin() {
           </Tabs>
 
           <Switch>
-            <Route path={`/${coinId}/price`}>
+            {/* 
+              Route path, Link to 넘겨주는게 다름, 
+              Route path에 Link to 처럼 {`/${coinId}/price`} 식으로 넘기면 useParams 안넘어옴! 
+              path 는 {`/:coinId/price`} 요런식으로 넘겨줘야함
+            */}
+            <Route path={`/:coinId/price`}>
               <Price />
             </Route>
-            <Route path={`/${coinId}/chart`}>
-              <Chart />
+            <Route path={`/:coinId/chart`}>
+              <Chart coinId={coinId} />
             </Route>
           </Switch>
         </>
