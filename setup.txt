@@ -151,3 +151,53 @@ React Query
 
   Math.floor(); 1.9 => 1
   Math.ceil(); 1.9 => 2
+
+------------------------
+
+APEXCHART
+https://apexcharts.com/
+npm install --save react-apexcharts apexcharts
+
+------------------------
+
+- Number()
+  문자열의 수를 숫자로 바꿔준다.
+  만약 인수를 형변환 할 수 없다면 NaN을 리턴한다.
+
+- parseInt()
+  문자열 인자(숫자 + 문자)를 받는다.
+  그 인자를 parse(해부하다, 품사문법적 관계를 설명하다)한다.
+  integer(정수) 또는 NaN을 리턴한다.
+
+- parseFloat()
+  문자열 인자(숫자 + 문자)를 받는다.
+  그 인자를 parse(해부하다, 품사문법적 관계를 설명하다)한다.
+  부동 소수점 숫자(float point number)를 반환한다.
+
+*** parseInt()와 parseFloat의 공통점
+  Number()와 달리, 일반 문자를 무시하고 숫자만 반환한다.
+
+*** parseInt()와 parseFloat의 차이점
+  소수점 뒤의 수를 무시하는지 안하는지의 차이
+
+- toFixed(3)
+  소수점 몇자리까지 나타낼지!
+------------------------
+
+refetchInterval: number
+
+------------------------
+
+react-helmet
+npm install react-helmet
+npm i --save-dev @types/react-helmet
+
+head of document
+  you can put
+    favicon
+    CSS
+
+------------------------
+TO-DO
+  back button
+  candle stick chart
