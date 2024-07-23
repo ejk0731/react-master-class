@@ -20,7 +20,9 @@ const Coin = styled.li`
   background-color: white;
   margin-bottom: 10px;
   border-radius: 15px;
-  color: ${(props) => props.theme.bgColor};
+  border: 1px solid white;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
 
   a {
     display: flex;
@@ -51,36 +53,6 @@ const Img = styled.img`
   height: 25px;
   margin-right: 10px;
 `;
-
-const coins = [
-  {
-    id: "btc-bitcoin",
-    name: "Bitcoin",
-    symbol: "BTC",
-    rank: 1,
-    is_new: false,
-    is_active: true,
-    type: "coin",
-  },
-  {
-    id: "eth-ethereum",
-    name: "Ethereum",
-    symbol: "ETH",
-    rank: 2,
-    is_new: false,
-    is_active: true,
-    type: "coin",
-  },
-  {
-    id: "hex-hex",
-    name: "HEX",
-    symbol: "HEX",
-    rank: 3,
-    is_new: false,
-    is_active: true,
-    type: "token",
-  },
-];
 
 interface ICoin {
   id: string;

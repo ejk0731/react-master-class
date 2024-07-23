@@ -152,7 +152,7 @@ function Coin() {
   const chartMatch = useRouteMatch("/:coinId/chart");
 
   const { isLoading: infoLoading, data: infoData } = useQuery<IInfoData>(["info", coinId], () => fetchCoinInfo(coinId));
-  const { isLoading: tickersLoading, data: tickersData } = useQuery<IPriceData>(["tickers", coinId], () => fetchCoinTickers(coinId), { refetchInterval: 5000 });
+  const { isLoading: tickersLoading, data: tickersData } = useQuery<IPriceData>(["tickers", coinId], () => fetchCoinTickers(coinId));
 
   const loading = infoLoading || tickersLoading;
 
@@ -177,7 +177,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>{`$ ${tickersData?.quotes.USD.price.toFixed(3)}`}</span>
+              <span>{`$ ${tickersData?.quotes?.USD?.price?.toFixed(3)}`}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>

@@ -201,3 +201,40 @@ head of document
 TO-DO
   back button
   candle stick chart
+
+------------------------
+
+State Management
+
+  Recoil, Redux,....
+
+  Why do we need state management?
+    to control one state, we have to pass it to many hierarchy
+    ex) App (isDark, modifierFn)
+        -> Router -> Coins (modifier)
+        -> Router -> Coin -> Chart (isDark)
+
+    global state
+    share something through the whole application
+
+    isDark: App -> Router -> Coin -> Chart
+    Header -> (isDark) <- Chart
+
+  < Recoil >
+
+    npm install recoil
+    
+    1. make states in Atoms
+
+      import { atom } from "recoil";
+
+      export const isDarkAtom = atom({
+        key: "",
+        default: false,
+      });
+
+    2. use useRecoilValue() in components
+    
+       const isDark = useRecoilValue(isDarkAtom);
+
+
