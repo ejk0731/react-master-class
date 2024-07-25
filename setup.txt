@@ -197,6 +197,8 @@ head of document
     favicon
     CSS
 
+  <Helmet><title>코인</title></Helmet>
+
 ------------------------
 TO-DO
   back button
@@ -217,6 +219,8 @@ State Management
     global state
     share something through the whole application
 
+    use it when you need to pass more than 2 steps
+
     isDark: App -> Router -> Coin -> Chart
     Header -> (isDark) <- Chart
 
@@ -234,7 +238,12 @@ State Management
       });
 
     2. use useRecoilValue() in components
-    
-       const isDark = useRecoilValue(isDarkAtom);
+
+      const isDark = useRecoilValue(isDarkAtom);
+
+    3. use useSetRecoilState() to change the state, same as setState
+
+      const setterFn = useSetRecoilState(isDarkAtom);
+
 
 

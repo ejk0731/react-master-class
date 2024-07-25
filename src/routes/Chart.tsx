@@ -21,8 +21,9 @@ interface IHistoricalData {
 
 function Chart({ coinId }: ChartProps) {
   const { isLoading, data } = useQuery<IHistoricalData[]>(["ohlcv", coinId], () => fetchCoinHistory(coinId), { refetchInterval: 10000 });
-  console.log(data?.map((price) => Number(price.close)) as number[]);
+  // console.log(data?.map((price) => Number(price.close)) as number[]);
   const isDark = useRecoilValue(isDarkAtom);
+  console.log(isDark);
   return (
     <div>
       {isLoading ? (
