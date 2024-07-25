@@ -245,5 +245,39 @@ State Management
 
       const setterFn = useSetRecoilState(isDarkAtom);
 
+------------------------
+
+React hook form 
+
+  npm install react-hook-form
+
+  make all the state and function very simple
+  form validation
+
+  # register function
+    This will replace state, onChange!
+    This returns an object which contains name, onBlur event, onChange event, ref.
+
+  # watch
+    see our form is going
+
+  # handleSubmit
+
+    const onValid = (data: any) => {
+      console.log(data);
+    };
+    <form onSubmit={handleSubmit(onValid)}>
+
+  ** validation **
+    < required >
+      If you put in html, user can delete from source code.
+      So put it in javascript.
+      If i don't put value, then it moves my cursor to the first empty field.
+
+  # formState
+  
+    formState.errors
+    returns object which has error 
+
 
 
