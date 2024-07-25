@@ -254,30 +254,56 @@ React hook form
   make all the state and function very simple
   form validation
 
-  # register function
-    This will replace state, onChange!
-    This returns an object which contains name, onBlur event, onChange event, ref.
+  useForm()
 
-  # watch
-    see our form is going
+    # register function
+      This will replace state, onChange!
+      This returns an object which contains name, onBlur event, onChange event, ref.
 
-  # handleSubmit
+    # watch
+      see our form is going
 
-    const onValid = (data: any) => {
-      console.log(data);
-    };
-    <form onSubmit={handleSubmit(onValid)}>
+    # handleSubmit
 
-  ** validation **
-    < required >
-      If you put in html, user can delete from source code.
-      So put it in javascript.
-      If i don't put value, then it moves my cursor to the first empty field.
+      const onValid = (data: any) => {
+        console.log(data);
+      };
+      <form onSubmit={handleSubmit(onValid)}>
 
-  # formState
-  
-    formState.errors
-    returns object which has error 
+    # formState
+
+      formState.errors
+      => returns object which has error 
+
+      {errors?.email?.message}
+      => return error message
+
+      
+    ** validation **
+      < required >
+        If you put in html, user can delete from source code.
+        So put it in javascript.
+        If i don't put value, then it moves my cursor to the first empty field.
+      
+      < pattern : value, message >
+        regular expression
+
+      < minLength, maxLength : value, message >
+
+    ** defaultValues **
+      put it as default value
+
+      const {
+        register,
+        watch,
+        handleSubmit,
+        formState: { errors },
+      } = useForm<IForm>({
+        defaultValues: {
+          email: "@naver.com",
+        }
+      });
+
 
 
 
