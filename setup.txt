@@ -256,39 +256,62 @@ React hook form
 
   useForm()
 
-    # register function
+    ### register function
       This will replace state, onChange!
       This returns an object which contains name, onBlur event, onChange event, ref.
 
-    # watch
+      ** validation **
+        < required >
+          If you put in html, user can delete from source code.
+          So put it in javascript.
+          If i don't put value, then it moves my cursor to the first empty field.
+        
+        < pattern : value, message >
+          regular expression      ex) /^[A-Za-z0-9._%+-]+@naver.com$/
+
+        < minLength, maxLength : value, message >
+
+        < validate >
+          make validate function
+          ex) ++ if you put "async", it will check the data form server
+              validate: {
+                noNico: async(value) => value.includes("nico") ? "no nicos allowed" : true,
+                noNick: (value) => value.includes("nick") ? "no nicks allowed" : true,
+              },
+
+
+    ### watch
       see our form is going
 
-    # handleSubmit
-
+    ### handleSubmit
       const onValid = (data: any) => {
         console.log(data);
       };
       <form onSubmit={handleSubmit(onValid)}>
 
-    # formState
-
+    ### formState
       formState.errors
       => returns object which has error 
 
       {errors?.email?.message}
       => return error message
 
+    ### setError
+      make custom validation
       
-    ** validation **
-      < required >
-        If you put in html, user can delete from source code.
-        So put it in javascript.
-        If i don't put value, then it moves my cursor to the first empty field.
-      
-      < pattern : value, message >
-        regular expression
+      const onValid = (data: IForm) => {
+        if (data.password !== data.password1) {
+          setError("password1", { message: "Password is not same" }, {shouldFocus: true});
+        }
+        setError("extraError", { message: "Server offline" });
+        console.log(data);
+      };
 
-      < minLength, maxLength : value, message >
+      <span>{errors?.password1?.message}</span>
+      <span>{errors?.extraError?.message}</span>
+
+
+
 
     ** defaultValues **
       put it as default value
