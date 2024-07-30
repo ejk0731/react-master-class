@@ -245,6 +245,14 @@ State Management
 
       const setterFn = useSetRecoilState(isDarkAtom);
 
+    *** Mostly use both value and modifierFn 
+      const [value, modifierFn] = useRecoilState(isDarkAtom);
+
+      So...
+        when you need only value => useRecoilValue
+        when you need only modFn => useSetRecoilState
+        when you need both value, modFn => useRecoilState
+
 ------------------------
 
 React hook form 
@@ -311,8 +319,6 @@ React hook form
       <span>{errors?.extraError?.message}</span>
 
 
-
-
     ** defaultValues **
       put it as default value
 
@@ -327,6 +333,8 @@ React hook form
         }
       });
 
-
+------------------------
+Typescript
+  never[]: always empty
 
 
