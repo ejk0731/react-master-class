@@ -12,7 +12,7 @@ interface IToDo {
   category: "TO_DO" | "DOING" | "DONE";
 }
 
-const toDoState = atom<IToDo>({
+const toDoState = atom<IToDo[]>({
   key: "toDo",
   default: [],
 });
@@ -22,13 +22,13 @@ function ToDoList() {
   // const modFn = useSetRecoilState(toDoState);
   const [toDos, setToDos] = useRecoilState(toDoState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
-  const handleValid = (data: IForm) => {
-    console.log("add to do", data.toDo);
-    setToDos((oldToDos) => {
-      [{ text: toDo, id: Date.now(), category: "TO_DO" }, ...oldToDos];
-    });
+  const handleValid = ({ toDo }: IForm) => {
+    setToDos((oldToDos) => [{ text: toDo, id: Date.now(), category: "TO_DO" }, ...oldToDos]);
     setValue("toDo", "");
   };
+
+  console.log(toDos)
+
   return (
     <div>
       <h1>To Dos</h1>
@@ -43,7 +43,9 @@ function ToDoList() {
         <button>Add</button>
       </form>
       <ul>
-        {toDos.map(toDo => <li key={toDo.text}></li> )}
+        {toDos.map((toDo) => (
+          <li key={toDo.id}>{toDo.text}</li>
+        ))}
         <li></li>
       </ul>
     </div>
