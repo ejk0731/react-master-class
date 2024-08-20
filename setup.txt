@@ -334,7 +334,36 @@ React hook form
       });
 
 ------------------------
+
 Typescript
   never[]: always empty
+
+------------------------
+
+To Do List
+
+ 1. change category in object
+    find to do based on id
+
+  if you want to change "mange" to "감"
+  find index of "mango"
+  slice it front and back
+  attach all together ...front + "감" + ...back
+
+  const food = ["pizza", "mango", "kimchi", "kimbab"];
+  const front = ["pizza"];
+  const back = ["kimchi", "kimbab"];
+  const finalPart = [...front, "감", ...back];
+
+  const food = ["pizza", "mango", "kimchi", "kimbab"];
+  const target = 1;
+  food.slice(0, 1);
+  food.slice(target + 1);
+  [...food.slice(0, target), "감", ...food.slice(target+1)]
+  ['pizza', '감', 'kimchi', 'kimbab']
+
+  splice => side effect : 원래 array가 변형되고 삭제된 elements를 return 함
+  slice => no side effect : 원래 array를 복제해 행해지고 결과물을 return 함
+
 
 
