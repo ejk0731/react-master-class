@@ -365,7 +365,9 @@ To Do List
     splice => side effect : 원래 array가 변형되고 삭제된 elements를 return 함
     slice => no side effect : 원래 array를 복제해 행해지고 결과물을 return 함
 
+  2. selector - change output of atom
 
+    filter function - return array without unmatched elements
 
 
 
