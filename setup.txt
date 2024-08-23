@@ -367,7 +367,61 @@ To Do List
 
   2. selector - change output of atom
 
-    filter function - return array without unmatched elements
+    - key, get
+    - useRecoilValue
+    - filter function - return array without unmatched elements
+
+  3. enum(enumerable)
+    We can use it instead of type.
+    When you put the string in value, there are more chances to spell it wrong
+
+    when there is no specific value it will show it's value as number 0,1,2,3...
+      export enum Categories {
+        "TO_DO",   // Categories.TO_DO = 0
+        "DOING",   // Categories.DOING = 1
+        "DONE",    // Categories.DONE = 2
+      }
+
+    But we can give them each different value
+      export enum Categories {
+        "TO_DO" = "TO_DO",   // Categories.TO_DO = TO_DO
+        "DOING"= "DOING",    // Categories.DOING = DOING
+        "DONE"= "DONE",      // Categories.DONE = DONE
+      }
 
 
+  >>> CHALLENGE <<<
+  
+    1. delete button
+
+      use filter! Filter makes new array following the condition
+      So find it's id and filter object without the id! 
+
+    2. localStorage
+
+      [1] save data 
+          
+          JSON data is string only ***
+          => JSON.stringify()
+          
+          save data with useEffect - whenever the data is changed
+          
+          localStorage.setItem("key1", 10);                                 // error - number
+          localStorage.setItem("key2", "20");                               // success - string
+          localStorage.setItem("key3", { value: 30 });                      // error - object
+          localStorage.setItem("toDos", JSON.stringify({ value: 40 }));     // success - string
+
+      [2] get data
+          
+          JSON data is string, so we have to make the data back to Javascript object 
+          => use JSON.parse()
+
+          const data = JSON.parse(localStorage.getItem("toDos") as string);
+
+          export const toDoState = atom<IToDo[]>({
+            key: "toDo",
+            default: data,
+          });
+          
+    
 

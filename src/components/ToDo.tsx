@@ -1,5 +1,5 @@
 import { useSetRecoilState } from "recoil";
-import { IToDo, toDoState } from "../atoms";
+import { Categories, IToDo, toDoState } from "../atoms";
 
 function ToDo({ text, category, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
@@ -9,29 +9,39 @@ function ToDo({ text, category, id }: IToDo) {
       currentTarget: { name },
     } = event;
     setToDos((oldToDos) => {
-      const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const newToDo = { text, id, category: name as IToDo["category"] };
-      return [...oldToDos.slice(0, targetIndex), newToDo, ...oldToDos.slice(targetIndex + 1)];
+      if (name === "delete") {
+        const newToDoList = oldToDos.filter((toDo) => toDo.id !== id);
+        localStorage.setItem("toDos", JSON.stringify(newToDoList));
+        return [...newToDoList];
+      } else {
+        const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
+        const newToDo = { text, id, category: name as IToDo["category"] };
+        localStorage.setItem("toDos", JSON.stringify([...oldToDos.slice(0, targetIndex), newToDo, ...oldToDos.slice(targetIndex + 1)]));
+        return [...oldToDos.slice(0, targetIndex), newToDo, ...oldToDos.slice(targetIndex + 1)];
+      }
     });
   };
   return (
     <li>
       {text}
-      {category !== "TO_DO" && (
-        <button name="TO_DO" onClick={onClick}>
+      {category !== Categories.TO_DO && (
+        <button name={Categories.TO_DO} onClick={onClick}>
           To Do
         </button>
       )}
-      {category !== "DOING" && (
-        <button name="DOING" onClick={onClick}>
+      {category !== Categories.DOING && (
+        <button name={Categories.DOING} onClick={onClick}>
           Doing
         </button>
       )}
-      {category !== "DONE" && (
-        <button name="DONE" onClick={onClick}>
+      {category !== Categories.DONE && (
+        <button name={Categories.DONE} onClick={onClick}>
           Done
         </button>
       )}
+      <button name="delete" onClick={onClick} style={{ background: "yellowGreen" }}>
+        Delete
+      </button>
     </li>
   );
 }
