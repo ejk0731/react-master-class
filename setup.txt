@@ -367,9 +367,26 @@ To Do List
 
   2. selector - change output of atom
 
-    - key, get
-    - useRecoilValue
+    - key, get, set
+    - useRecoilValue, useRecoilState
     - filter function - return array without unmatched elements
+
+    *get : get other state         ({ get }) => {return}
+    *set : change other state      ({ set }, newValue) => {set(state), val}
+
+      export const hourSelector = selector<number>({
+        key: "hours",
+        get: ({ get }) => {
+          const minutes = get(minuteState);
+          return Math.floor(minutes / 60);
+        },
+        set: ({ set }, newValue) => {
+          const minutes = Number(newValue) * 60;
+          set(minuteState, minutes)
+          console.log(newValue);
+        },
+      });
+
 
   3. enum(enumerable)
     We can use it instead of type.
@@ -391,7 +408,7 @@ To Do List
 
 
   >>> CHALLENGE <<<
-  
+
     1. delete button
 
       use filter! Filter makes new array following the condition
@@ -423,5 +440,13 @@ To Do List
             default: data,
           });
           
+------------------------
+
+#7 TRELLO CLONE
+
+  +string => number
+  +"1" => 1 as number
+
+
     
 
