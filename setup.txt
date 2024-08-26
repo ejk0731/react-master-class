@@ -447,6 +447,12 @@ To Do List
   +string => number
   +"1" => 1 as number
 
+  react-beautiful-dnd 
+  npm i react-beautiful-dnd
+  npm i --save-dev @types/react-beautiful-dnd
+
+  npm i react-beautiful-dnd --legacy-peer-deps
+
 
     
 
