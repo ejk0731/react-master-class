@@ -447,12 +447,13 @@ To Do List
   +string => number
   +"1" => 1 as number
 
-  react-beautiful-dnd 
-  npm i react-beautiful-dnd
-  npm i --save-dev @types/react-beautiful-dnd
+  *** react-beautiful-dnd : Drag and Drop
+    npm i react-beautiful-dnd
+    npm i --save-dev @types/react-beautiful-dnd
 
-  npm i react-beautiful-dnd --legacy-peer-deps
+    npm i react-beautiful-dnd --legacy-peer-deps
 
+    magic.placeholder => keep the board size whenever drag happens
 
     
 

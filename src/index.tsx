@@ -42,7 +42,7 @@ footer, header, hgroup, main, menu, nav, section {
 body {
   font-weight: 300;
   line-height: 1;
-  color:${(props) => props.theme.textColor};
+  color: black;
   line-height: 1.2;
 }
 menu, ol, ul {
