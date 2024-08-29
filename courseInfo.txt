@@ -455,5 +455,53 @@ To Do List
 
     magic.placeholder => keep the board size whenever drag happens
 
-    
+
+    ex) DragDropContext, Droppable, Draggable
+
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Wrapper>
+        <Boards>
+          <Droppable droppableId="one">
+            {(magic) => (
+              <Board ref={magic.innerRef} {...magic.droppableProps}>
+                {toDos.map((toDo, index) => {
+                  return (
+                    <Draggable key={index} draggableId={toDo} index={index}>
+                      {(magic) => (
+                        <Card ref={magic.innerRef} {...magic.draggableProps} {...magic.dragHandleProps}>
+                          {toDo}
+                        </Card>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {magic.placeholder}
+              </Board>
+            )}
+          </Droppable>
+        </Boards>
+      </Wrapper>
+    </DragDropContext>
+
+    const onDragEnd = (result: any, provided: any) => {
+      console.log(result, provided);
+    };
+
+      >>> Result <<<
+      
+        {
+        "draggableId": "b",           // draggedItem
+        "type": "DEFAULT",
+        "source": {
+            "index": 1,
+            "droppableId": "one"
+        },
+        "reason": "DROP",
+        "mode": "FLUID",
+        "destination": {              // where did i drop the item
+            "droppableId": "one",
+            "index": 4
+        },
+        "combine": null
+         }
 
