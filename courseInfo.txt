@@ -530,6 +530,17 @@ To Do List
         => don't use number for it's Id
 
 
-    react.memo
+    - react.memo
     => if the props is not changed, do not rerender    
         export default React.memo(DraggableCard);
+
+
+    const toDos = {
+                    x: ["a", "b"],
+                    z: ["n", "t"]
+                  }
+
+    Object.keys(toDos)        // ["x", "z"]
+    Object.values(toDos)      // [Array(2), Array(2)]  
+    toDos["x"]                // ["a", "b"]
+    
