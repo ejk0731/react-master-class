@@ -1,7 +1,8 @@
-import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { toDoState } from "./atoms";
+import DraggableCard from "./Components/DraggableCard";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,27 +28,14 @@ const Board = styled.div`
   background-color: ${(props) => props.theme.boardColor};
 `;
 
-const Card = styled.div`
-  border-radius: 5px;
-  margin-bottom: 5px;
-  padding: 10px 10px;
-  background-color: ${(props) => props.theme.cardColor};
-`;
-
 function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = ({ draggableId, destination, source }: DropResult) => {
     if (!destination) return;
     setToDos((oldToDos) => {
       const copyToDos = [...oldToDos];
-      console.log(copyToDos)
-      console.log("delete item on " + source.index)
       copyToDos.splice(source.index, 1);
-      console.log("deleted item " + source.index)
-      console.log(copyToDos)
-      console.log("put back " + draggableId + " on " + destination.index)
       copyToDos.splice(destination.index, 0, draggableId);
-      console.log(copyToDos)
       return copyToDos;
     });
   };
@@ -60,15 +48,7 @@ function App() {
             {(magic) => (
               <Board ref={magic.innerRef} {...magic.droppableProps}>
                 {toDos.map((toDo, index) => {
-                  return (
-                    <Draggable key={toDo} draggableId={toDo} index={index}>
-                      {(magic) => (
-                        <Card ref={magic.innerRef} {...magic.draggableProps} {...magic.dragHandleProps}>
-                          {toDo}
-                        </Card>
-                      )}
-                    </Draggable>
-                  );
+                  return <DraggableCard key={toDo} toDo={toDo} index={index} />;
                 })}
                 {magic.placeholder}
               </Board>

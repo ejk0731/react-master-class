@@ -512,14 +512,14 @@ To Do List
          }
 
    
-    *** splice
+    - splice
       it modifies your array directly. (mutation => Any change in the DNA sequence of a cell)
 
         const x = [1,2,3,4,5]
         x.splice(2, 1)            // [3]
         x                         // [1, 2, 4, 5]
 
-    *** toUpperCase
+    - toUpperCase
       it doesn't modifies your value directly. (non-mutation)
 
         const name = "nico"
@@ -528,3 +528,8 @@ To Do List
 
     *** draggable's key need to be same as draggableId!!
         => don't use number for it's Id
+
+
+    react.memo
+    => if the props is not changed, do not rerender    
+        export default React.memo(DraggableCard);
