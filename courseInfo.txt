@@ -447,7 +447,10 @@ To Do List
   +string => number
   +"1" => 1 as number
 
-  *** react-beautiful-dnd : Drag and Drop
+------------------------
+
+*** react-beautiful-dnd : Drag and Drop
+
     npm i react-beautiful-dnd
     npm i --save-dev @types/react-beautiful-dnd
 
@@ -466,7 +469,7 @@ To Do List
               <Board ref={magic.innerRef} {...magic.droppableProps}>
                 {toDos.map((toDo, index) => {
                   return (
-                    <Draggable key={index} draggableId={toDo} index={index}>
+                    <Draggable key={toDo} draggableId={toDo} index={index}>
                       {(magic) => (
                         <Card ref={magic.innerRef} {...magic.draggableProps} {...magic.dragHandleProps}>
                           {toDo}
@@ -482,6 +485,9 @@ To Do List
         </Boards>
       </Wrapper>
     </DragDropContext>
+
+
+*** How to make it remember it's destination??
 
     const onDragEnd = (result: any, provided: any) => {
       console.log(result, provided);
@@ -505,3 +511,20 @@ To Do List
         "combine": null
          }
 
+   
+    *** splice
+      it modifies your array directly. (mutation => Any change in the DNA sequence of a cell)
+
+        const x = [1,2,3,4,5]
+        x.splice(2, 1)            // [3]
+        x                         // [1, 2, 4, 5]
+
+    *** toUpperCase
+      it doesn't modifies your value directly. (non-mutation)
+
+        const name = "nico"
+        name.toUpperCase()        // 'NICO'
+        name                      // 'nico'
+
+    *** draggable's key need to be same as draggableId!!
+        => don't use number for it's Id
