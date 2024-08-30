@@ -3,7 +3,6 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { toDoState } from "./atoms";
 import Board from "./Components/Board";
-import { useEffect } from "react";
 
 const Wrapper = styled.div`
   display: flex;
