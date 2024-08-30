@@ -544,3 +544,29 @@ To Do List
     Object.values(toDos)      // [Array(2), Array(2)]  
     toDos["x"]                // ["a", "b"]
 
+------------------------
+
+Async, Sync
+
+  Asynchronous 
+  is a non-blocking architecture, 
+  so the execution of one task isn’t dependent on another. 
+  Tasks can run simultaneously.
+
+  Synchronous 
+  is a blocking architecture, 
+  so the execution of each operation depends on completing the one before it. 
+  Each task requires an answer before moving on to the next iteration.
+
+------------------------
+
+filter()
+
+  const xList = [
+    {text: "a", id: 12},
+    {text: "b", id: 123},
+  ]
+
+  const selectedItem = xList.filter((xItem) => { return 12 === xItem.id})    // {text: "a", id: 12}
+
+

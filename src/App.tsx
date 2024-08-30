@@ -29,30 +29,36 @@ function App() {
     console.log(info);
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
-      // same board move
+      // 혼자해보기 - same board move
       setToDos((allBoards) => {
         const boardCopy = [...allBoards[source.droppableId]];
+        const selectedObject = boardCopy.filter((toDo) => {
+          return Number(draggableId) === toDo.id;
+        });
+
+        console.log(boardCopy, selectedObject[0]);
         boardCopy.splice(source.index, 1);
-        boardCopy.splice(destination.index, 0, draggableId);
+        boardCopy.splice(destination.index, 0, selectedObject[0]);
         return {
           ...allBoards,
           [source.droppableId]: boardCopy,
         };
       });
-    } else {
-      // 혼자해보기 - cross board move
-      setToDos((allBoards) => {
-        const sourceBoard = [...allBoards[source.droppableId]];
-        const targetBoard = [...allBoards[destination?.droppableId]];
-        sourceBoard.splice(source.index, 1);
-        targetBoard.splice(destination?.index, 0, draggableId);
-        return {
-          ...allBoards,
-          [source.droppableId]: sourceBoard,
-          [destination?.droppableId]: targetBoard,
-        };
-      });
     }
+    //  else {
+    //   // 혼자해보기 - cross board move
+    //   setToDos((allBoards) => {
+    //     const sourceBoard = [...allBoards[source.droppableId]];
+    //     const targetBoard = [...allBoards[destination?.droppableId]];
+    //     sourceBoard.splice(source.index, 1);
+    //     // targetBoard.splice(destination?.index, 0, draggableId);
+    //     return {
+    //       ...allBoards,
+    //       [source.droppableId]: sourceBoard,
+    //       [destination?.droppableId]: targetBoard,
+    //     };
+    //   });
+    // }
   };
 
   return (
