@@ -569,4 +569,13 @@ filter()
 
   const selectedItem = xList.filter((xItem) => { return 12 === xItem.id})    // {text: "a", id: 12}
 
+------------------------
+
+Code CHALLENGE
+1. save todo data in localStorage 
+2. delete the todo. make a button or drag it into bin box and it will be deleted
+3. change the boards order. make the board in droppable
+4. make new board. make atom for that
+
+
 

@@ -3,7 +3,8 @@ import DraggableCard from "./DraggableCard";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { IToDo, toDoState } from "../atoms";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
   padding-top: 10px;
@@ -51,7 +52,7 @@ const Form = styled.form`
 `;
 
 const Board = ({ toDos, boardId }: IBoardProps) => {
-  const setToDoList = useSetRecoilState(toDoState);
+  const [toDoList, setToDoList] = useRecoilState(toDoState);
   const { register, setValue, handleSubmit } = useForm<IForm>();
   // Sync
   const onValid = ({ toDo }: IForm) => {
@@ -66,6 +67,9 @@ const Board = ({ toDos, boardId }: IBoardProps) => {
     });
   };
 
+  useEffect(() => {
+    localStorage.setItem("toDoList", JSON.stringify(toDoList));
+  }, [toDoList]);
 
   return (
     <Wrapper>
@@ -81,7 +85,7 @@ const Board = ({ toDos, boardId }: IBoardProps) => {
             ref={magic.innerRef}
             {...magic.droppableProps}
           >
-            {toDos.map((toDo, index) => {
+            {toDos?.map((toDo, index) => {
               return <DraggableCard key={toDo.id} index={index} toDoId={toDo.id} toDoText={toDo.text} />;
             })}
             {magic.placeholder}
