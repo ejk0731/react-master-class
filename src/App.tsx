@@ -1,4 +1,4 @@
-import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { toDoState } from "./atoms";
@@ -19,6 +19,12 @@ const Boards = styled.div`
   width: 100%;
   gap: 10px;
   grid-template-columns: repeat(3, 1fr);
+`;
+
+const TrashCan = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
 `;
 
 function App() {
@@ -42,7 +48,7 @@ function App() {
         };
       });
     }
-    if (destination?.droppableId !== source.droppableId) {
+    if (destination?.droppableId !== source.droppableId && destination?.droppableId !== "delete") {
       setToDos((allBoards) => {
         const sourceBoard = [...allBoards[source.droppableId]];
         const taskObj = sourceBoard[source.index];
@@ -58,15 +64,35 @@ function App() {
         };
       });
     }
+    if (destination?.droppableId === "delete") {
+      setToDos((allBoards) => {
+        const sourceBoard = [...allBoards[source.droppableId]];
+        sourceBoard.splice(source.index, 1)
+
+        return {
+          ...allBoards,
+          [source.droppableId]: sourceBoard,
+        };
+      });
+    }
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
         <Boards>
-          {Object.keys(toDos).map((boardId) => {
-            return <Board key={boardId} boardId={boardId} toDos={toDos[boardId]} />;
-          })}
+          <>
+            {Object.keys(toDos).map((boardId) => {
+              return <Board key={boardId} boardId={boardId} toDos={toDos[boardId]} />;
+            })}
+            <Droppable droppableId="delete">
+              {(provided) => (
+                <TrashCan {...provided.droppableProps} ref={provided.innerRef}>
+                  delete
+                </TrashCan>
+              )}
+            </Droppable>
+          </>
         </Boards>
       </Wrapper>
     </DragDropContext>
