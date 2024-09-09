@@ -7,7 +7,9 @@ import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 
 const Wrapper = styled.div`
+  width: 200px;
   padding-top: 10px;
+  margin: 10px;
   border-radius: 5px;
   min-height: 200px;
   background-color: ${(props) => props.theme.boardColor};
