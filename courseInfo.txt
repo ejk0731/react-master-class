@@ -585,3 +585,13 @@ npm install framer-motion
   x <div></div>
   o <motion.div></motion.div>
 
+  transition
+    type 
+      spring
+      damping
+      stiffness
+      mass
+      .
+      .
+      .
+
