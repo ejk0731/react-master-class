@@ -577,5 +577,11 @@ Code CHALLENGE
 3. change the boards order. make the board in droppable
 4. make new board. make atom for that
 
+------------------------
 
+framer-motion
+
+npm install framer-motion
+  x <div></div>
+  o <motion.div></motion.div>
 
