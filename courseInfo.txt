@@ -595,3 +595,13 @@ npm install framer-motion
       .
       .
 
+  varients
+    name it as you want
+
+    const myVars = {
+      start: { scale: 0 },
+      end: { scale: 1, rotateZ: 360, transition: { type: "spring", delay: 1 } },
+    };
+
+    <Box variants={myVars} initial="start" animate="end" />
+
