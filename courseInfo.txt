@@ -608,3 +608,9 @@ npm install framer-motion
     delayChildren
     staggerChildren
 
+  whileHover
+  whileDrag
+  whileFocus
+  whileTap
+  drag
+
