@@ -605,3 +605,6 @@ npm install framer-motion
 
     <Box variants={myVars} initial="start" animate="end" />
 
+    delayChildren
+    staggerChildren
+
