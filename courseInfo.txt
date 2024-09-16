@@ -613,4 +613,9 @@ npm install framer-motion
   whileFocus
   whileTap
   drag
+    x, y
+  dragSnapToOrigin
+  dragElastic
+  dragConstraints
+
 
