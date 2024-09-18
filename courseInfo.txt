@@ -618,4 +618,23 @@ npm install framer-motion
   dragElastic
   dragConstraints
 
+  MotionValue
+    It doesn't retrigger React redering cycle
+    
+    - useMotionValue
+      const x = useMotionValue(0);
+      x.get()
+      x.set()
+
+    - useTransform
+      const rotateZ = useTransform(x, [-800, 800], [-360, 360]);
+
+    - useScroll
+      scrollX
+      scrollXProgress
+      scrollY
+      scrollYProgress
+
+
+
 
