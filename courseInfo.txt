@@ -580,6 +580,7 @@ Code CHALLENGE
 ------------------------
 
 framer-motion
+https://www.framer.com/motion/
 
 npm install framer-motion
   x <div></div>
@@ -634,6 +635,9 @@ npm install framer-motion
       scrollXProgress
       scrollY
       scrollYProgress
+
+  AnimatePresence
+    Animate components whem they are removed from the React tree 
 
 
 
