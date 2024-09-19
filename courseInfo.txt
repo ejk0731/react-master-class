@@ -638,6 +638,33 @@ npm install framer-motion
 
   AnimatePresence
     Animate components whem they are removed from the React tree 
+    When the key changes, React think this element is disappeared
+
+    - custom
+      const box = {
+        entry: (back: boolean) => ({
+          x: back ? -500 : 500,
+          opacity: 0,
+          scale: 0,
+        }),
+        center: {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          transition: {
+            duration: 0.5,
+          },
+        },
+        exit: (back: boolean) => ({
+          x: back ? 500 : -500,
+          opacity: 0,
+          scale: 0,
+          transition: {
+            duration: 0.5,
+          },
+        }),
+      };
+    - mode="wait"
 
 
 
