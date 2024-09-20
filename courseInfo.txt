@@ -679,7 +679,7 @@ npm install framer-motion
     it just make animation for you!!
 
   Shared Layout animation
-    connect components with layoutId
+    connect components with layoutId(string)
 
 
 
