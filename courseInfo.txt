@@ -77,7 +77,8 @@ useful keyboard shortcut
 
 ------------------------
 
-useRouteMatch
+useRouteMatch() 
+  It changed to useMatch()
 
 ------------------------
 
@@ -681,6 +682,14 @@ npm install framer-motion
   Shared Layout animation
     connect components with layoutId(string)
 
+------------------------
 
+Netflix CLONE 
 
+  update react-router-dom v6
+    npm install react-router-dom@6
 
+    Router => BrowserRouter
+    Switch => Routes
+
+  path="/" 인 Route를 제일 아래에 작성해주어야함
