@@ -637,8 +637,16 @@ npm install framer-motion
       scrollYProgress
 
   AnimatePresence
-    Animate components whem they are removed from the React tree 
+    Animate components when they are removed from the React tree 
     When the key changes, React think this element is disappeared
+
+    Write props(initial, animate, exit) on the element
+
+    <AnimatePresence>
+      {clicked ? (
+        <Overlay initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+      ) : null}
+    </AnimatePresence>
 
     - custom
       const box = {
