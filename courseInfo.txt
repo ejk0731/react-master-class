@@ -666,6 +666,13 @@ npm install framer-motion
       };
     - mode="wait"
 
+  Layout Amimation - very cool!!!!!!!!!
+    If there is a style change in element and write "layout" props on that moving element, 
+    it just make animation for you!!
+
+  Shared Layout animation
+    connect components with layoutId
+
 
 
 
