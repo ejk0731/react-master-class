@@ -4,7 +4,7 @@ import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
-import { darkTheme } from "./theme";
+import { theme } from "./theme";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -79,7 +79,7 @@ const queryClient = new QueryClient();
 root.render(
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />
       </ThemeProvider>
