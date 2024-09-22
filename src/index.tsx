@@ -75,10 +75,10 @@ a {
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-const queryClient = new QueryClient();
+const client = new QueryClient();
 root.render(
   <RecoilRoot>
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={client}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />

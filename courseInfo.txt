@@ -693,3 +693,18 @@ Netflix CLONE
     Switch => Routes
 
   path="/" 인 Route를 제일 아래에 작성해주어야함
+
+  TheMovieDB API Key
+  https://www.themoviedb.org/settings/api?language=ko
+
+  TheMovieDB API Document
+  https://developers.themoviedb.org/3/movies/get-now-playing
+
+  352a4cb68306036a2c0dc248b997c85a
+
+  https://api.themoviedb.org/3/movie/now_playing?api_key=352a4cb68306036a2c0dc248b997c85a&language=en-US&page=1
+
+  https://developer.themoviedb.org/docs/image-basics
+
+  https://image.tmdb.org/t/p/w500/{file_name}
+  https://image.tmdb.org/t/p/original/Asg2UUwipAdE87MxtJy7SQo08XI.jpg
