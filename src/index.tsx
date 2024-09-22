@@ -65,7 +65,7 @@ table {
 }
 body {
   font-family: "Source Sans 3", sans-serif;
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.white.darker};
   color: ${(props) => props.theme.textColor};
 }
 a {
