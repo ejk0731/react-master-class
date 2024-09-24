@@ -44,7 +44,7 @@ const Slider = styled.div`
 `;
 const Row = styled(motion.div)`
   display: grid;
-  gap: 10px;
+  gap: 5px;
   grid-template-columns: repeat(6, 1fr);
   position: absolute;
   width: 100%;
@@ -53,21 +53,35 @@ const Box = styled(motion.div)`
   background-color: white;
   height: 200px;
   color: red;
-  font-size: 66px;
+  font-size: 36px;
 `;
 
 // vw, window.innerWidth, window.outerWidth
 const rowVariants = {
   hidden: { x: "100vw" },
   visible: { x: 0 },
-  exit: { x: "-100vw"},
+  exit: { x: "-100vw" },
 };
 
 const Home = () => {
   const { data, isLoading } = useQuery<IGetMoviesResult>(["movie", "nowPlaying"], getMovies);
   const [index, setIndex] = useState(0);
-  const incraseIndex = () => setIndex((prev) => prev + 1);
-  console.log(data, isLoading);
+  const [leaving, setLeaving] = useState(false);
+  const totalMovies = Number(data?.results.length) - 1;
+  const offset = 6;
+  const maxIndex = Number(totalMovies) / offset - 1;
+  // const page = Math.floor(Number(data?.results.length) / 6);
+
+  const incraseIndex = () => {
+    if (leaving) return;
+    if (index + 1 >= maxIndex) return;
+    setLeaving(true);
+    setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+  };
+  const toggleLeaving = () => {
+    setLeaving(false);
+  };
+  console.log(data?.results.length, maxIndex);
   return (
     <Wrapper>
       {isLoading ? (
@@ -82,20 +96,21 @@ const Home = () => {
             <Overview> {data?.results[0].overview}</Overview>
           </Banner>
           <Slider>
-            <AnimatePresence>
+            <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
               <Row
                 key={index}
                 variants={rowVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                transition={{ type: "tween", duration: 4 }}
+                transition={{ type: "tween", duration: 1 }}
               >
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <Box key={i}>
-                    {index},{i}
-                  </Box>
-                ))}
+                {data?.results
+                  .slice(1)
+                  .slice(offset * index, offset * index + offset)
+                  .map((movie) => (
+                    <Box key={movie.id}>{movie.title}</Box>
+                  ))}
               </Row>
             </AnimatePresence>
           </Slider>

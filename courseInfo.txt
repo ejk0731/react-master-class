@@ -642,6 +642,7 @@ npm install framer-motion
     When the key changes, React think this element is disappeared
 
     Write props(initial, animate, exit) on the element
+    - onExitComplete
 
     <AnimatePresence>
       {clicked ? (
