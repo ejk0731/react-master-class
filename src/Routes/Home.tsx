@@ -40,7 +40,7 @@ const Overview = styled.p`
 
 const Slider = styled.div`
   position: relative;
-  top: -230px;
+  top: -100px;
 `;
 const Row = styled(motion.div)`
   display: grid;
@@ -56,6 +56,12 @@ const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-position: center;
   height: 200px;
   font-size: 36px;
+  &:first-child {
+    transform-origin: center left;
+  }
+  &:last-child {
+    transform-origin: center right;
+  }
 `;
 
 // vw, window.innerWidth, window.outerWidth
@@ -63,6 +69,17 @@ const rowVariants = {
   hidden: { x: "100vw" },
   visible: { x: 0 },
   exit: { x: "-100vw" },
+};
+
+const boxVariants = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.3,
+    y: -50,
+    transition: { duration: 0.3, delay: 0.5, type: "tween" },
+  },
 };
 
 const Home = () => {
@@ -110,7 +127,14 @@ const Home = () => {
                   .slice(1)
                   .slice(offset * index, offset * index + offset)
                   .map((movie) => (
-                    <Box key={movie.id} bgPhoto={makeImagePath(movie.backdrop_path, "w500")}></Box>
+                    <Box
+                      key={movie.id}
+                      variants={boxVariants}
+                      bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+                      whileHover="hover"
+                      initial="normal"
+                      transition={{ type: "tween" }}
+                    ></Box>
                   ))}
               </Row>
             </AnimatePresence>
