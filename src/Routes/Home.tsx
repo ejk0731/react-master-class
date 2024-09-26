@@ -50,6 +50,7 @@ const Row = styled(motion.div)`
   width: 100%;
 `;
 const Box = styled(motion.div)<{ bgPhoto: string }>`
+  position: relative;
   background-color: white;
   background-image: url(${(props) => props.bgPhoto});
   background-size: cover;
@@ -61,6 +62,19 @@ const Box = styled(motion.div)<{ bgPhoto: string }>`
   }
   &:last-child {
     transform-origin: center right;
+  }
+`;
+
+const Info = styled(motion.div)`
+  padding: 10px;
+  background-color: ${(props) => props.theme.black.lighter};
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  h4 {
+    text-align: center;
+    font-size: 18px;
   }
 `;
 
@@ -78,6 +92,13 @@ const boxVariants = {
   hover: {
     scale: 1.3,
     y: -50,
+    transition: { duration: 0.3, delay: 0.5, type: "tween" },
+  },
+};
+
+const infoVariants = {
+  hover: {
+    opacity: 1,
     transition: { duration: 0.3, delay: 0.5, type: "tween" },
   },
 };
@@ -134,7 +155,9 @@ const Home = () => {
                       whileHover="hover"
                       initial="normal"
                       transition={{ type: "tween" }}
-                    ></Box>
+                    >
+                      <Info variants={infoVariants}><h4>{movie.title}</h4></Info>
+                    </Box>
                   ))}
               </Row>
             </AnimatePresence>
