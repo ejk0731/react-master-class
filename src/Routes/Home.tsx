@@ -40,7 +40,7 @@ const Overview = styled.p`
 
 const Slider = styled.div`
   position: relative;
-  top: -150px;
+  top: -230px;
 `;
 const Row = styled(motion.div)`
   display: grid;
@@ -49,10 +49,12 @@ const Row = styled(motion.div)`
   position: absolute;
   width: 100%;
 `;
-const Box = styled(motion.div)`
+const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-color: white;
+  background-image: url(${(props) => props.bgPhoto});
+  background-size: cover;
+  background-position: center;
   height: 200px;
-  color: red;
   font-size: 36px;
 `;
 
@@ -67,21 +69,20 @@ const Home = () => {
   const { data, isLoading } = useQuery<IGetMoviesResult>(["movie", "nowPlaying"], getMovies);
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
-  const totalMovies = Number(data?.results.length) - 1;
   const offset = 6;
-  const maxIndex = Number(totalMovies) / offset - 1;
-  // const page = Math.floor(Number(data?.results.length) / 6);
 
   const incraseIndex = () => {
-    if (leaving) return;
-    if (index + 1 >= maxIndex) return;
-    setLeaving(true);
-    setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+    if (data) {
+      if (leaving) return;
+      const totalMovies = data.results.length - 1;
+      const maxIndex = Math.floor(totalMovies / offset) - 1;
+      toggleLeaving();
+      setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+    }
   };
   const toggleLeaving = () => {
     setLeaving(false);
   };
-  console.log(data?.results.length, maxIndex);
   return (
     <Wrapper>
       {isLoading ? (
@@ -109,7 +110,7 @@ const Home = () => {
                   .slice(1)
                   .slice(offset * index, offset * index + offset)
                   .map((movie) => (
-                    <Box key={movie.id}>{movie.title}</Box>
+                    <Box key={movie.id} bgPhoto={makeImagePath(movie.backdrop_path, "w500")}></Box>
                   ))}
               </Row>
             </AnimatePresence>
