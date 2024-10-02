@@ -97,9 +97,29 @@ const BigMovie = styled(motion.div)`
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: red;
+  background-color: ${(props) => props.theme.black.lighter};
 `;
 
+const BigCover = styled.div`
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+`;
+const BigTitle = styled.h3`
+  position: relative;
+  top: -86px;
+  padding: 20px;
+  color: ${(props) => props.theme.white.lighter};
+  font-size: 46px;
+`;
+const BigOverview = styled.p`
+  position: relative;
+  top: -86px;
+  padding: 20px;
+  color: ${(props) => props.theme.white.lighter};
+  font-size: 16px;
+`;
 // vw, window.innerWidth, window.outerWidth
 const rowVariants = {
   hidden: { x: "100vw" },
@@ -134,7 +154,8 @@ const Home = () => {
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const offset = 6;
-
+  const clickedMovie = bigMovieMatch?.params.movieId && data?.results.find((movie) => movie.id === Number(bigMovieMatch.params.movieId)); // if it's a string gives undefined
+  console.log(clickedMovie);
   const incraseIndex = () => {
     if (data) {
       if (leaving) return;
@@ -195,7 +216,17 @@ const Home = () => {
                   style={{
                     top: scrollY.get() + 100,
                   }}
-                />
+                >
+                  {clickedMovie && (
+                    <>
+                      <BigCover
+                        style={{ backgroundImage: `linear-gradient(black, transparent),  url(${makeImagePath(clickedMovie.backdrop_path, "w500")})` }}
+                      />
+                      <BigTitle>{clickedMovie.title}</BigTitle>
+                      <BigOverview>{clickedMovie.overview}</BigOverview>
+                    </>
+                  )}
+                </BigMovie>
               </>
             ) : null}
           </AnimatePresence>

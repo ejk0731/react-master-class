@@ -129,7 +129,6 @@ const Header = () => {
     setSearchOpen(!searchOpen);
   };
 
-  console.log(homeMatch, tvMatch);
   return (
     <Nav variants={navVariants} initial={"top"}>
       <Col>
