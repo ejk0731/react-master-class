@@ -734,3 +734,8 @@ Netflix CLONE
           />
         ) : null}
       </AnimatePresence>
+
+  *** URLSearchParams
+      const search = new URLSearchParams("?keyword=dune&region=kr");
+      search.get(region);
+      search.get(keyword);

@@ -155,7 +155,6 @@ const Home = () => {
   const [leaving, setLeaving] = useState(false);
   const offset = 6;
   const clickedMovie = bigMovieMatch?.params.movieId && data?.results.find((movie) => movie.id === Number(bigMovieMatch.params.movieId)); // if it's a string gives undefined
-  console.log(clickedMovie);
   const incraseIndex = () => {
     if (data) {
       if (leaving) return;
